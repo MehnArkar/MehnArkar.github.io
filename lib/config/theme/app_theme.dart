@@ -10,8 +10,9 @@ class AppTheme{
             primary: Colors.white,
             onPrimary: Colors.black,
             secondary: AppColor.secondaryColor,
-            brightness: Brightness.light
+            brightness: Brightness.light,
           ),
+          scaffoldBackgroundColor: Colors.white,
           fontFamily: GoogleFonts.openSans().fontFamily,
           textTheme: const TextTheme(
             bodySmall: TextStyle(fontSize: AppDimention.font_body_small,color: Colors.black),
@@ -30,6 +31,7 @@ class AppTheme{
         secondary: AppColor.secondaryColor,
         brightness: Brightness.dark
     ),
+      scaffoldBackgroundColor: Colors.black,
       fontFamily: GoogleFonts.openSans().fontFamily,
       textTheme: const TextTheme(
         bodySmall: TextStyle(fontSize: AppDimention.font_body_small,color: Colors.white),
