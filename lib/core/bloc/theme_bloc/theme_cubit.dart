@@ -3,7 +3,7 @@ import 'package:portfolio/core/bloc/theme_bloc/theme_state.dart';
 
 
 class ThemeCubit extends Cubit<ThemeState>{
-  ThemeCubit():super(const ThemeState.light());
+  ThemeCubit():super(const ThemeState.dark());
 
   onChangeTheme(){
     state.when(

@@ -4,7 +4,7 @@ import 'package:portfolio/config/theme/app_theme.dart';
 import 'package:portfolio/core/bloc/theme_bloc/theme_cubit.dart';
 import 'package:portfolio/core/bloc/theme_bloc/theme_state.dart';
 import 'package:portfolio/core/utils/service_locator.dart';
-import 'package:portfolio/features/index/index_page.dart';
+import 'package:portfolio/features/index/views/pages/index_page.dart';
 
 void main() {
   ServiceLocator.init();
