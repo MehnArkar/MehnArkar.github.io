@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/cursor_cubit.dart';
+
+import '../bloc/curdor_cubit/cursor_cubit.dart';
 
 class CursorWidget extends StatefulWidget {
   const CursorWidget({super.key});

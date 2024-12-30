@@ -72,6 +72,9 @@ class _$ThemeStateCopyWithImpl<$Res, $Val extends ThemeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ThemeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$LightThemeImplCopyWithImpl<$Res>
   __$$LightThemeImplCopyWithImpl(
       _$LightThemeImpl _value, $Res Function(_$LightThemeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ThemeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -190,6 +196,9 @@ class __$$DarkThemeImplCopyWithImpl<$Res>
   __$$DarkThemeImplCopyWithImpl(
       _$DarkThemeImpl _value, $Res Function(_$DarkThemeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ThemeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

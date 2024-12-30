@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
-import 'package:portfolio/core/bloc/theme_bloc/theme_state.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/app/core/presentation/bloc/theme_cubit/theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState>{
   ThemeCubit():super(const ThemeState.dark());
