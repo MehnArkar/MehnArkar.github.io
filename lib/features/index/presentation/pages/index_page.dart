@@ -6,22 +6,26 @@ import '../bloc/curdor_cubit/cursor_cubit.dart';
 import '../widgets/cursor_widget.dart';
 
 class IndexPage extends StatelessWidget {
-  const IndexPage({super.key});
+  const IndexPage._({super.key});
+
+  static Widget create(){
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context)=>injector.get<CursorCubit>())],
+      child:const IndexPage._(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [BlocProvider(create: (context)=>injector.get<CursorCubit>())],
-      child: BlocBuilder<CursorCubit,Offset>(
-        builder: (context,state) {
-          return Scaffold(
-            body: MouseRegion(
-              onHover: (event)=> context.read<CursorCubit>().onCursorChange(event.position),
-              child: const Stack(
-                children: [
-                   CursorWidget()
-                ],
-              ),
+    return Scaffold(
+      body: BlocBuilder<CursorCubit,Offset>(
+          builder: (context,state) {
+          return MouseRegion(
+            onHover: (event)=> context.read<CursorCubit>().onCursorChange(event.position),
+            child: const Stack(
+              children: [
+                 CursorWidget()
+              ],
             ),
           );
         }
