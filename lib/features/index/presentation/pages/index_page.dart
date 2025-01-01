@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/app/utils/responsive/responsive_layout.dart';
 import '../../../../app/core/presentation/bloc/theme_cubit/theme_cubit.dart';
 import '../../../../app/utils/service_locator.dart';
 import '../bloc/curdor_cubit/cursor_cubit.dart';
@@ -24,7 +25,13 @@ class IndexPage extends StatelessWidget {
             onHover: (event)=> context.read<CursorCubit>().onCursorChange(event.position),
             child: const Stack(
               children: [
-                 CursorWidget()
+                 CursorWidget(),
+                 ResponsiveLayout(
+                   mobile: Center(child: Text("mobile")),
+                    tablet: Center(child: Text("tablet")),
+                    desktop: Center(child: Text("desktop")),
+                   watch: Center(child: Text("watch")),
+                 )
               ],
             ),
           );
