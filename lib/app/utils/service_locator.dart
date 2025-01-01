@@ -6,7 +6,7 @@ GetIt injector = GetIt.instance;
 
 class ServiceLocator {
 
-  static init(){
+  static void init(){
     _injectDataSource();
     _injectRepository();
     _injectBloc();

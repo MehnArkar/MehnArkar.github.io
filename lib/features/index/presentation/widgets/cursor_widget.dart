@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../bloc/curdor_cubit/cursor_cubit.dart';
 
 class CursorWidget extends StatefulWidget {
@@ -53,7 +52,6 @@ class _CursorWidgetState extends State<CursorWidget> with TickerProviderStateMix
           child:  IgnorePointer(
             child: GestureDetector(
               onTap: (){
-                print("Clicked");
                 _clickAnimationController.forward();
               },
               child: AnimatedBuilder(
@@ -68,7 +66,7 @@ class _CursorWidgetState extends State<CursorWidget> with TickerProviderStateMix
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.transparent,
-                        border: Border.all(color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.5),width: 1.5)
+                        border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),width: 1.5)
                     ),
                     child: Stack(
                       alignment: Alignment.center,
@@ -78,14 +76,14 @@ class _CursorWidgetState extends State<CursorWidget> with TickerProviderStateMix
                           height: _clickAnimationController.value * 50,
                           duration: _animationDuration,
                           decoration: BoxDecoration(
-                              border: Border.all(color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.5),width: 1.5)
+                              border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),width: 1.5)
                           ),
                         ),
                         Container(
                           width: 5,
                           height: 5,
                           decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.5),
+                              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                               shape: BoxShape.circle
                           ),
                         ),
