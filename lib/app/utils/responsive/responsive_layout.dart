@@ -12,8 +12,7 @@ class ResponsiveLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DeviceScreenType deviceScreenType = Responsive.getDeviceScreenType(context);
-    return AnimatedSwitcher(
-        duration: const Duration(milliseconds: 100),
+    return Container(
         child: switch(deviceScreenType) {
           DeviceScreenType.mobile => mobile,
           DeviceScreenType.tablet => tablet,

@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:portfolio/features/index/presentation/bloc/nav_bar_cubit/nav_bar_cubit.dart';
 import '../../features/index/presentation/bloc/curdor_cubit/cursor_cubit.dart';
 import '../core/presentation/bloc/theme_cubit/theme_cubit.dart';
 
@@ -23,5 +24,6 @@ class ServiceLocator {
   static void _injectBloc(){
     injector.registerFactory(() => ThemeCubit());
     injector.registerFactory(() => CursorCubit());
+    injector.registerFactory(()=> NavBarCubit());
   }
 }
