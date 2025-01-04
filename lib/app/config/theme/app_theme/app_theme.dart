@@ -64,16 +64,13 @@ class AppTheme {
 
     switch(Responsive.getDeviceScreenType(context)){
       case DeviceScreenType.mobile:
-        scaleFactor = 0.5;
+        scaleFactor = 0.75;
         break;
       case DeviceScreenType.tablet:
         scaleFactor = 0.75;
         break;
       case DeviceScreenType.desktop:
         scaleFactor = 0.95;
-        break;
-      case DeviceScreenType.watch:
-        scaleFactor = 0.35;
         break;
     }
 

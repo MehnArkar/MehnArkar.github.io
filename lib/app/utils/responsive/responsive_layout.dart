@@ -16,8 +16,7 @@ class ResponsiveLayout extends StatelessWidget {
         child: switch(deviceScreenType) {
           DeviceScreenType.mobile => mobile,
           DeviceScreenType.tablet => tablet,
-          DeviceScreenType.desktop => desktop,
-          DeviceScreenType.watch => watch,
+          DeviceScreenType.desktop => desktop
         }
     );
   }

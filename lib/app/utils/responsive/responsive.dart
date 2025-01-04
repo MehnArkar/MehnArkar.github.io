@@ -2,17 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:portfolio/app/utils/responsive/device_screen_type.dart';
 
 class Responsive {
-  static double watchWidth = 320;    // For smartwatch devices
   static double mobileWidth = 480;   // For phones
   static double tabletWidth = 768;   // For tablets
   static double desktopWidth = 1024; // For small desktops or large tablets
 
   static DeviceScreenType  getDeviceScreenType(BuildContext context){
     double screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth <= watchWidth){
-      return DeviceScreenType.watch;
-    }
-    else if (screenWidth <= mobileWidth){
+    if (screenWidth <= mobileWidth){
       return DeviceScreenType.mobile;
     }
     else if (screenWidth <= tabletWidth){
@@ -35,8 +31,16 @@ class Responsive {
     return getDeviceScreenType(context) == DeviceScreenType.desktop;
   }
 
-  static bool isWatch(BuildContext context){
-    return getDeviceScreenType(context) == DeviceScreenType.watch;
+  static double size(BuildContext context,{double desktop = 0, double tablet = 0, double mobile = 0}){
+    DeviceScreenType screenType = getDeviceScreenType(context);
+      switch(screenType){
+        case DeviceScreenType.mobile:
+             return mobile;
+        case DeviceScreenType.tablet:
+              return tablet;
+        case DeviceScreenType.desktop:
+              return desktop;
+      }
   }
 
 }

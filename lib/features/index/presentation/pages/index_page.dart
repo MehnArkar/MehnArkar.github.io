@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
 import 'package:portfolio/app/utils/responsive/responsive_layout.dart';
+import 'package:portfolio/features/index/data/nab_bar_type.dart';
 import 'package:portfolio/features/index/presentation/bloc/nav_bar_cubit/nav_bar_cubit.dart';
-import 'package:portfolio/features/index/presentation/widgets/custom_desktop_nav_bar.dart';
+import 'package:portfolio/features/index/presentation/widgets/nav_bar_item.dart';
+import 'package:portfolio/features/index/presentation/widgets/top_nav_bar.dart';
 import '../../../../app/utils/service_locator.dart';
 import '../bloc/curdor_cubit/cursor_cubit.dart';
 import '../widgets/cursor_widget.dart';
@@ -23,10 +25,6 @@ class IndexPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(context.textTheme.headlineSmall?.fontSize);
-    print(context.textTheme.bodyLarge?.fontSize);
-    print(context.textTheme.bodyMedium?.fontSize);
-
     return Scaffold(
       body: BlocBuilder<CursorCubit,Offset>(
           builder: (context,state) {
@@ -36,11 +34,11 @@ class IndexPage extends StatelessWidget {
               alignment: Alignment.topCenter,
               children: [
                 /// NavBar
-                CustomDesktopNavBar(),
+                const TopNavBar(),
 
                 /// Body
                  ResponsiveLayout(
-                   mobile: Center(child: Text("mobile",style: context.textTheme.bodyMedium,)),
+                   mobile: Center(child: Text("Mobile",style: context.textTheme.bodyMedium,)),
                     tablet: Center(child: Text("tablet",style: context.textTheme.bodyMedium,)),
                     desktop: Center(child: Text("Desktop",style: context.textTheme.bodyMedium)),
                    watch: Center(child: Text("watch",style: context.textTheme.bodyMedium)),
