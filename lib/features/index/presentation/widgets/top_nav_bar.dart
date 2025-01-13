@@ -29,7 +29,7 @@ class TopNavBar extends StatelessWidget {
             builder: (context,selectedNavBar) {
               return Row(
                 children: [
-                  Text("Arkar.dev",style: context.textTheme.headlineSmall?.copyWith(color: context.colorScheme.primary,fontWeight: FontWeight.bold)),
+                  Text("Arkar.dev",style: context.textTheme.headlineSmall?.copyWith(color: context.colorScheme.primary,fontWeight: FontWeight.w600)),
                   const Spacer(),
                   if(Responsive.isDesktop(context))
                   Row(

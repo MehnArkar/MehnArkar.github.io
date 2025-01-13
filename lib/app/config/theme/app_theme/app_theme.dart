@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/app/config/theme/dimension/app_dimension.dart';
 import 'package:portfolio/app/config/theme/dimension/desktop_dimension.dart';
+import 'package:portfolio/app/utils/constant/app_constants.dart';
 import '../../../utils/responsive/device_screen_type.dart';
 import '../../../utils/responsive/responsive.dart';
 import '../app_colors.dart';
@@ -10,7 +11,7 @@ class AppTheme {
   static  ThemeData createLightTheme(BuildContext context){
     return ThemeData(
       useMaterial3: true,
-      fontFamily: GoogleFonts.openSans().fontFamily,
+      fontFamily: AppConstants.fontFamily,
       scaffoldBackgroundColor: AppColors.surface,
       colorScheme: ColorScheme.fromSeed(
           seedColor: AppColors.primary
@@ -29,7 +30,7 @@ class AppTheme {
   static ThemeData createDarkTheme(BuildContext context){
     return ThemeData(
       useMaterial3: true,
-      fontFamily: GoogleFonts.openSans().fontFamily,
+      fontFamily: AppConstants.fontFamily,
       scaffoldBackgroundColor: AppColors.surfaceDark,
       colorScheme: ColorScheme.fromSeed(
           seedColor: AppColors.primary
@@ -48,12 +49,12 @@ class AppTheme {
 
   static  final ElevatedButtonThemeData _elevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-        fixedSize: const Size(double.maxFinite, 50),
+        fixedSize: const Size.fromHeight(AppDimension.buttonHeight),
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.onPrimary,
         disabledBackgroundColor: AppColors.onSurface.withOpacity(0.25),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(DesktopDimension.borderRadius),
+          borderRadius: BorderRadius.circular(AppDimension.borderRadius),
         )
     ),
   );
