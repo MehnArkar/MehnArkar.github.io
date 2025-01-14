@@ -19,7 +19,10 @@ class _NavBarItemState extends State<NavBarItem> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
       onTap: () => context.read<NavBarCubit>().onSelectedNavBar(widget.type),
       child: MouseRegion(
         onHover: (_) => setState(() {

@@ -6,6 +6,7 @@ import 'package:portfolio/app/utils/responsive/responsive.dart';
 import 'package:portfolio/app/utils/responsive/responsive_layout.dart';
 import 'package:portfolio/features/home/presentation/pages/desktop_home_page.dart';
 import 'package:portfolio/features/index/presentation/bloc/nav_bar_cubit/nav_bar_cubit.dart';
+import 'package:portfolio/features/index/presentation/widgets/animated_theme_switch_button.dart';
 import 'package:portfolio/features/index/presentation/widgets/top_nav_bar.dart';
 import '../../../../app/utils/service_locator.dart';
 import '../bloc/curdor_cubit/cursor_cubit.dart';
@@ -53,7 +54,13 @@ class IndexPage extends StatelessWidget {
                         ),
 
                         ResponsiveLayout(
-                          desktop: SizedBox(width: double.maxFinite,height: context.sh,),
+                          desktop: SizedBox(
+                            width: double.maxFinite,
+                            height: context.sh,
+                            child: Center(
+                              child: AnimatedThemeSwitchButton(),
+                            )
+                          ),
                         )
                       ],
                     ),

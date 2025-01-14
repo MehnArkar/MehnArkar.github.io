@@ -1,11 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio/app/config/theme/dimension/desktop_dimension.dart';
-import 'package:portfolio/app/config/theme/dimension/mobile_dimension.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
 import 'package:portfolio/features/index/data/nab_bar_type.dart';
-import 'package:portfolio/features/index/presentation/widgets/light_dark_icon_widget.dart';
+import 'package:portfolio/features/index/presentation/widgets/animated_theme_switch_button.dart';
 import 'package:portfolio/features/index/presentation/widgets/nav_bar_item.dart';
 import '../../../../app/utils/responsive/responsive.dart';
 import '../bloc/nav_bar_cubit/nav_bar_cubit.dart';
@@ -43,7 +41,7 @@ class TopNavBar extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(width: 20),
-                  const ThemeIconWidget()
+                  const AnimatedThemeSwitchButton(width: 50)
 
                 ],
               );
