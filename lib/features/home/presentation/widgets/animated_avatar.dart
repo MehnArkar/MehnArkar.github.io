@@ -3,8 +3,7 @@ import 'package:rive/rive.dart';
 
 class AnimatedAvatar extends StatefulWidget {
   final double? width;
-  final double? height;
-  const AnimatedAvatar({super.key,this.width,this.height});
+  const AnimatedAvatar({super.key,this.width});
 
   @override
   State<AnimatedAvatar> createState() => _AnimatedAvatarState();
@@ -51,11 +50,13 @@ class _AnimatedAvatarState extends State<AnimatedAvatar> {
         onTap:()=>_thinking?.fire(),
         child: SizedBox(
           width: widget.width,
-          height: widget.height,
-          child: RiveAnimation.asset(
-            'assets/animations/avatar.riv',
-            fit: BoxFit.cover,
-            onInit: _onRiveInit,
+          child: AspectRatio(
+            aspectRatio: 700/800,
+            child: RiveAnimation.asset(
+              'assets/animations/avatar.riv',
+              fit: BoxFit.cover,
+              onInit: _onRiveInit,
+            ),
           ),
         ),
       ),

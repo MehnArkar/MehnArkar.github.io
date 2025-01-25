@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/core/presentation/widgets/gradient_button.dart';
+import 'package:portfolio/app/core/presentation/widgets/screen_size_container.dart';
 import 'package:portfolio/app/utils/constant/app_constants.dart';
 import 'package:portfolio/app/utils/extensions/animation_extension.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
@@ -16,10 +17,7 @@ class DesktopHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      height: context.sh,
-      padding:   EdgeInsets.symmetric(horizontal: context.sw*0.1),
+    return ScreenSizeContainer(
       child: Stack(
         children: [
           Center(
@@ -59,7 +57,7 @@ class DesktopHomePage extends StatelessWidget {
   }
 
   Widget _avatarPanel(BuildContext context){
-    return const Center(child: AnimatedAvatar(width: 300,height: 350,));
+    return const Center(child: AnimatedAvatar(width: 300));
   }
 
   Widget _techStack(BuildContext context){

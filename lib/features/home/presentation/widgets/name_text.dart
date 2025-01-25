@@ -8,6 +8,7 @@ class NameText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize:  MainAxisSize.min,
       children: [
         Text("Hi, I'm ",style: context.textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w700)),
         GradientText("Arkar Min",style: context.textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w700))
