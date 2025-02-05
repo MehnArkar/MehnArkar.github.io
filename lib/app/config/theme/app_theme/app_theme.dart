@@ -20,7 +20,8 @@ class AppTheme {
           primary: AppColors.primary,
           onPrimary: AppColors.onPrimary,
           surface: AppColors.surface,
-          onSurface: AppColors.onSurface
+          onSurface: AppColors.onSurface,
+          onSurfaceVariant: AppColors.onSrufaceVarient
       ),
       textTheme: responsiveTextTheme(context),
       elevatedButtonTheme: _elevatedButtonTheme,
@@ -39,7 +40,8 @@ class AppTheme {
           primary: AppColors.primaryDark,
           onPrimary: AppColors.onPrimaryDark,
           surface: AppColors.surfaceDark,
-          onSurface: AppColors.onSurfaceDark
+          onSurface: AppColors.onSurfaceDark,
+          onSurfaceVariant: AppColors.onSrufaceVarientDark
       ),
       textTheme: responsiveTextTheme(context),
       elevatedButtonTheme: _elevatedButtonTheme,
@@ -65,10 +67,10 @@ class AppTheme {
 
     switch(Responsive.getDeviceScreenType(context)){
       case DeviceScreenType.mobile:
-        scaleFactor = 0.75;
+        scaleFactor = 0.95;
         break;
       case DeviceScreenType.tablet:
-        scaleFactor = 0.75;
+        scaleFactor = 0.95;
         break;
       case DeviceScreenType.desktop:
         scaleFactor = 0.95;

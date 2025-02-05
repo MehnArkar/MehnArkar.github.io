@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
-import 'package:portfolio/features/index/data/nab_bar_type.dart';
+import 'package:portfolio/features/index/data/models/nab_bar_type.dart';
 import 'package:portfolio/features/index/presentation/bloc/nav_bar_cubit/nav_bar_cubit.dart';
 
 class NavBarItem extends StatefulWidget {

@@ -14,7 +14,7 @@ class ScreenSizeContainer extends StatelessWidget {
       height: context.sh,
       padding:Responsive.isDesktop(context)
           ?   EdgeInsets.symmetric(horizontal: context.sw*0.1)
-          : const EdgeInsets.symmetric(horizontal: AppDimension.mobilePagePadding),
+          :   const EdgeInsets.symmetric(horizontal: AppDimension.mobilePagePadding),
       child: child,
     );
   }

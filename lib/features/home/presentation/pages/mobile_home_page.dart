@@ -3,6 +3,7 @@ import 'package:portfolio/app/config/theme/dimension/app_dimension.dart';
 import 'package:portfolio/app/core/presentation/widgets/screen_size_container.dart';
 import 'package:portfolio/app/utils/extensions/animation_extension.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
+import 'package:portfolio/app/utils/responsive/responsive_layout.dart';
 import 'package:portfolio/features/home/presentation/widgets/animated_avatar.dart';
 import 'package:portfolio/features/home/presentation/widgets/bio_text.dart';
 import 'package:portfolio/features/home/presentation/widgets/name_text.dart';
@@ -10,6 +11,7 @@ import 'package:portfolio/features/home/presentation/widgets/position_text.dart'
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../app/core/presentation/widgets/gradient_button.dart';
 import '../../../../app/utils/constant/app_constants.dart';
+import '../../../../app/utils/responsive/responsive.dart';
 import '../widgets/animated_tech_stack.dart';
 
 class MobileHomePage extends StatelessWidget {
@@ -55,7 +57,7 @@ class MobileHomePage extends StatelessWidget {
       children: [
         Text("Tech Stack",style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700)),
         Container(margin: EdgeInsets.symmetric(horizontal: context.sw*0.03),height: 30,width: 2,color: context.colorScheme.onSurfaceVariant),
-        const AnimatedTechStack(iconSize: 20)
+        AnimatedTechStack(iconSize:Responsive.isTablet(context) ? 30 : 20)
       ],
     );
   }

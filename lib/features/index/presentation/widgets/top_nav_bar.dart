@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
-import 'package:portfolio/features/index/data/nab_bar_type.dart';
+import 'package:portfolio/features/index/data/models/nab_bar_type.dart';
 import 'package:portfolio/features/index/presentation/widgets/animated_theme_switch_button.dart';
 import 'package:portfolio/features/index/presentation/widgets/nav_bar_item.dart';
 import '../../../../app/utils/responsive/responsive.dart';
