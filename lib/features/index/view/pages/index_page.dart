@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
 import 'package:portfolio/app/utils/responsive/responsive.dart';
 import 'package:portfolio/app/utils/responsive/responsive_layout.dart';
+import 'package:portfolio/features/contact/view/pages/desktop_contact_page.dart';
+import 'package:portfolio/features/contact/view/pages/mobile_contact_page.dart';
 import 'package:portfolio/features/project/view/pages/mobile_project_page.dart';
 import 'package:portfolio/features/project/view_model/project_bloc/project_bloc.dart';
 import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
@@ -71,12 +73,18 @@ class IndexPage extends StatelessWidget {
                             BlocProvider(create: (_)=>injector.get<ProjectBloc>()),
                             BlocProvider(create: (_)=>injector.get<ProjectSliderBloc>())
                           ],
-                          child:  ResponsiveLayout(
+                          child:  const ResponsiveLayout(
                             desktop: DesktopProjectsPage(),
-                            mobile: const MobileProjectPage(),
-                            tablet: const MobileProjectPage(),
+                            mobile:  MobileProjectPage(),
+                            tablet:  MobileProjectPage(),
 
                           ),
+                        ),
+
+                        const ResponsiveLayout(
+                          mobile:  MobileContactPage(),
+                          tablet:  MobileContactPage(),
+                          desktop:  DesktopContactPage()
                         )
                       ],
                     ),

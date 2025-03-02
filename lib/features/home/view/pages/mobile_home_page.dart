@@ -19,35 +19,30 @@ class MobileHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenSizeContainer(
-        child: Stack(
-          children: [
-            Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  AnimatedAvatar(width: context.sh*0.25),
-                  const NameText().slideUpAnimation(),
-                  const SizedBox(height: AppDimension.mobilePaddingSmallS),
-                  const PositionText().slideUpAnimation(),
-                  SizedBox(height: context.sh*0.05),
-                  const BioText().slideUpAnimation(),
-                  SizedBox(height: context.sh*0.05),
-                  GradientButton(
-                    label: "Contact Me",
-                    onPressed: ()=>launchUrl(AppConstants.emailLaunchUri),
-                  ).slideUpAnimation()
-                ],
-              ),
-            ),
-            Positioned(
-              left: 0,
-              bottom:MediaQuery.of(context).padding.bottom+AppDimension.mobilePaddingMediumL,
-              child: _techStack(context)
-            )
-          ],
-        )
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 50,horizontal: AppDimension.mobilePagePadding),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: kToolbarHeight),
+          AnimatedAvatar(width: context.sh*0.25),
+          const NameText().slideUpAnimation(),
+          const SizedBox(height: AppDimension.mobilePaddingSmallS),
+          const PositionText().slideUpAnimation(),
+          SizedBox(height: context.sh*0.05),
+          const BioText().slideUpAnimation(),
+          SizedBox(height: context.sh*0.05),
+          GradientButton(
+            label: "Contact Me",
+            onPressed: ()=>launchUrl(AppConstants.emailLaunchUri),
+          ).slideUpAnimation(),
+          SizedBox(height: context.sh*0.05),
+          Align(
+              alignment: Alignment.centerLeft,
+              child: _techStack(context))
+        ],
+      ),
     );
   }
 
@@ -57,7 +52,7 @@ class MobileHomePage extends StatelessWidget {
       children: [
         Text("Tech Stack",style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700)),
         Container(margin: EdgeInsets.symmetric(horizontal: context.sw*0.03),height: 30,width: 2,color: context.colorScheme.onSurfaceVariant),
-        AnimatedTechStack(iconSize:Responsive.isTablet(context) ? 30 : 20)
+        AnimatedTechStack(iconSize:30)
       ],
     );
   }
