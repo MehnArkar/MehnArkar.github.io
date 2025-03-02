@@ -19,4 +19,21 @@ extension AnimationExtension on Widget{
       ]
     );
   }
+
+  slideInAnimation(){
+    return animate(
+        effects:  [
+          const SlideEffect(
+              duration: AppConstants.animationDuration,
+              begin:  Offset(0.3, 0.0),
+              end:  Offset(0, 0)
+          ),
+          const FadeEffect(
+              duration: AppConstants.animationDuration,
+              begin: 0,
+              end: 1
+          )
+        ]
+    );
+  }
 }

@@ -5,7 +5,7 @@ import '../../../utils/constant/app_constants.dart';
 
 enum VisibilityAnimationType{
   slideUp,
-  slideLeft
+  slideIn
 }
 
 class VisibilityAnimationWidget extends StatefulWidget {
@@ -33,7 +33,7 @@ class _VisibilityAnimationWidgetState extends State<VisibilityAnimationWidget> w
         key: UniqueKey(),
         onVisibilityChanged: (visibilityInfo){
           var visiblePercentage = visibilityInfo.visibleFraction;
-          if(visiblePercentage>=1){
+          if(visiblePercentage>=0.5){
             _animationController.forward();
           }
         },
@@ -53,7 +53,7 @@ class _VisibilityAnimationWidgetState extends State<VisibilityAnimationWidget> w
   }
 
   final Map<VisibilityAnimationType,Effect<dynamic>> animations = {
-    VisibilityAnimationType.slideLeft:const SlideEffect(
+    VisibilityAnimationType.slideIn:const SlideEffect(
         duration: AppConstants.animationDuration,
         begin: Offset(0.3, 0.0),
         end: Offset(0.0, 0.0)
