@@ -5,16 +5,17 @@ import 'package:portfolio/app/utils/extensions/context_extension.dart';
 import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
 
 class PreviousButton extends StatelessWidget {
-  const PreviousButton({super.key});
+  final int currentIndex;
+
+  const PreviousButton({super.key, required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
-    ProjectSliderBloc projectSliderBloc = context.read<ProjectSliderBloc>();
     return OutlinedButton(
-        onPressed: projectSliderBloc.state > 0
+        onPressed: currentIndex > 0
             ? () {
-                if (projectSliderBloc.state > 0) {
-                  projectSliderBloc.onChangeIndex(projectSliderBloc.state - 1);
+                if (currentIndex > 0) {
+                  context.read<ProjectSliderBloc>().onChangeIndex(currentIndex - 1);
                 }
               }
             : null,

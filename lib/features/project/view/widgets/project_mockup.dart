@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/app/config/theme/app_colors.dart';
 import 'package:portfolio/app/utils/constant/app_constants.dart';
+import 'package:portfolio/app/utils/extensions/context_extension.dart';
 import 'package:portfolio/features/project/data/model/project.dart';
 import 'package:portfolio/features/project/view_model/project_bloc/project_bloc.dart';
 import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
@@ -77,7 +78,7 @@ class _ProjectMockupState extends State<ProjectMockup> with SingleTickerProvider
                        ClipRRect(
                          child: BackdropFilter(
                            filter: ImageFilter.blur(sigmaY: 10,sigmaX: 10),
-                           child: Container(color: Colors.white.withOpacity(0.1)),
+                           child: Container(color: context.colorScheme.surface.withOpacity(0.1)),
                          ),
                        ),
                      ],

@@ -11,7 +11,7 @@ enum VisibilityAnimationType{
 class VisibilityAnimationWidget extends StatefulWidget {
   final Widget child;
   final VisibilityAnimationType animationType;
-  const VisibilityAnimationWidget({super.key,required this.child,required this.animationType});
+  const VisibilityAnimationWidget({super.key,required this.animationType,required this.child});
 
   @override
   State<VisibilityAnimationWidget> createState() => _VisibilityAnimationWidgetState();

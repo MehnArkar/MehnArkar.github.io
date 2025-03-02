@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app/utils/constant/app_constants.dart';
 
 class AnimatedSlideInText extends StatefulWidget {
   final String text;

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
 import 'package:portfolio/app/utils/responsive/responsive.dart';
 import 'package:portfolio/app/utils/responsive/responsive_layout.dart';
+import 'package:portfolio/features/project/view/pages/mobile_project_page.dart';
 import 'package:portfolio/features/project/view_model/project_bloc/project_bloc.dart';
 import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
 import '../../../../app/utils/service_locator.dart';
@@ -72,6 +73,9 @@ class IndexPage extends StatelessWidget {
                           ],
                           child:  ResponsiveLayout(
                             desktop: DesktopProjectsPage(),
+                            mobile: const MobileProjectPage(),
+                            tablet: const MobileProjectPage(),
+
                           ),
                         )
                       ],

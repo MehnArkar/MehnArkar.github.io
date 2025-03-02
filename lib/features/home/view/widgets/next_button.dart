@@ -7,24 +7,26 @@ import 'package:portfolio/features/project/view_model/project_slider_bloc/projec
 import '../../../project/view_model/project_bloc/project_bloc.dart';
 
 class NextButton extends StatelessWidget {
-  const NextButton({super.key});
+  final int currentIndex;
+  const NextButton({super.key,required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
-    ProjectSliderBloc projectSliderBloc = context.read<ProjectSliderBloc>();
     ProjectBloc projectBloc = context.read<ProjectBloc>();
+
     return ElevatedButton(
-        onPressed:projectSliderBloc.state < projectBloc.state.length - 1
-            ? (){
-          if(projectSliderBloc.state < projectBloc.state.length - 1) {
-            projectSliderBloc.onChangeIndex(projectSliderBloc.state + 1);
+        onPressed: currentIndex < projectBloc.state.length - 1
+            ? () {
+          if (currentIndex < projectBloc.state.length - 1) {
+            context.read<ProjectSliderBloc>().onChangeIndex(currentIndex + 1);
           }
         }
-        :null,
+            : null,
         style: ElevatedButton.styleFrom(
-          fixedSize: const Size(120, AppDimension.buttonHeight)
-        ),
-        child: Text("Next",style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600,color: context.colorScheme.onPrimary))
-    );
+            fixedSize: const Size(120, AppDimension.buttonHeight)),
+        child: Text("Next",
+            style: context.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: context.colorScheme.onPrimary)));
   }
 }

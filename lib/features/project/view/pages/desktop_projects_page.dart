@@ -16,9 +16,14 @@ import 'package:portfolio/features/project/view_model/project_slider_bloc/projec
 
 import '../widgets/projects_page_title.dart';
 
-class DesktopProjectsPage extends StatelessWidget {
-  DesktopProjectsPage({super.key});
+class DesktopProjectsPage extends StatefulWidget {
+  const DesktopProjectsPage({super.key});
 
+  @override
+  State<DesktopProjectsPage> createState() => _DesktopProjectsPageState();
+}
+
+class _DesktopProjectsPageState extends State<DesktopProjectsPage> {
   int? previousIndex;
 
   @override
@@ -27,9 +32,9 @@ class DesktopProjectsPage extends StatelessWidget {
         child: Stack(
           alignment: Alignment.topLeft,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: kToolbarHeight),
-              child: const ProjectsPageTitle(),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: kToolbarHeight),
+              child: ProjectsPageTitle(),
             ),
             Center(
               child: Row(
@@ -75,7 +80,7 @@ class DesktopProjectsPage extends StatelessWidget {
                                       const SizedBox(height: 20),
                                       Row(
                                         children: [
-                                          Text("Available on - ",
+                                          Text("Available on",
                                               style: context.textTheme.bodyMedium
                                                   ?.copyWith(
                                                       fontWeight: FontWeight.w600,
@@ -100,11 +105,11 @@ class DesktopProjectsPage extends StatelessWidget {
                                       const SizedBox(height: 50),
                                     ],
                                   ),
-                                  const Row(
+                                   Row(
                                     children: [
-                                      PreviousButton(),
-                                      SizedBox(width: 25),
-                                      NextButton()
+                                      PreviousButton(currentIndex: projectIndex),
+                                      const SizedBox(width: 25),
+                                      NextButton(currentIndex: projectIndex)
                                     ],
                                   )
                                 ],
