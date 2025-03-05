@@ -13,7 +13,6 @@ class DesktopAboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("About page build");
     return ScreenSizeContainer(
       child: Center(
         child: Column(

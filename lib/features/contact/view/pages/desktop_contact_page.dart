@@ -14,7 +14,6 @@ class DesktopContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Contact page build");
     return  ScreenSizeContainer(
       child: Stack(
         children: [

@@ -16,7 +16,6 @@ class DesktopHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Home page build");
     return ScreenSizeContainer(
       child: Stack(
         children: [

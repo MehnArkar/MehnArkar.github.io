@@ -6,6 +6,7 @@ import 'package:portfolio/app/utils/responsive/responsive_layout.dart';
 import 'package:portfolio/features/contact/view/pages/desktop_contact_page.dart';
 import 'package:portfolio/features/contact/view/pages/mobile_contact_page.dart';
 import 'package:portfolio/features/index/data/models/nab_bar_type.dart';
+import 'package:portfolio/features/index/view/widgets/page_indicator.dart';
 import 'package:portfolio/features/project/view/pages/mobile_project_page.dart';
 import 'package:portfolio/features/project/view_model/project_bloc/project_bloc.dart';
 import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
@@ -23,6 +24,7 @@ import '../widgets/top_nav_bar.dart';
 class IndexPage extends StatelessWidget {
    IndexPage._();
    final ScrollController _scrollController =  ScrollController();
+
 
   static Widget create(){
     return MultiBlocProvider(
@@ -98,6 +100,13 @@ class IndexPage extends StatelessWidget {
                     const TopNavBar(),
 
                     /// Page Indicator
+                    if(Responsive.isDesktop(context))
+                    Positioned(
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        child: PageIndicator(scrollController: _scrollController)
+                    ),
 
 
                     /// Cursor
@@ -114,26 +123,26 @@ class IndexPage extends StatelessWidget {
   }
 
   void _scrollToPage(BuildContext context,NavBarType type){
-    // Find the RenderBox of the target widget
-    final RenderBox? renderBox = context.read<NavBarCubit>().getNavBarKey(type).currentContext?.findRenderObject() as RenderBox?;
-
-    if (renderBox != null) {
-      // Get the position of the target widget relative to the ListView
-      final position = renderBox.localToGlobal(Offset.zero);
-
-      // Get the current scroll position and viewport dimensions
-      final scrollOffset = _scrollController.offset;
-
-      //Calculate the precise scroll position
-      double targetScrollOffset = position.dy + scrollOffset;
-
-      // Animate to the calculated position
-      _scrollController.animateTo(
-        targetScrollOffset,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-      );
-    }
+    // // Find the RenderBox of the target widget
+    // final RenderBox? renderBox = context.read<NavBarCubit>().getNavBarKey(type).currentContext?.findRenderObject() as RenderBox?;
+    //
+    // if (renderBox != null) {
+    //   // Get the position of the target widget relative to the ListView
+    //   final position = renderBox.localToGlobal(Offset.zero);
+    //
+    //   // Get the current scroll position and viewport dimensions
+    //   final scrollOffset = _scrollController.offset;
+    //
+    //   //Calculate the precise scroll position
+    //   double targetScrollOffset = position.dy + scrollOffset;
+    //
+    //   // Animate to the calculated position
+    //   _scrollController.animateTo(
+    //     targetScrollOffset,
+    //     duration: const Duration(milliseconds: 500),
+    //     curve: Curves.easeInOut,
+    //   );
+    // }
 
   }
 

@@ -28,7 +28,6 @@ class _DesktopProjectsPageState extends State<DesktopProjectsPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("Projects page build");
     return ScreenSizeContainer(
         child: Stack(
           alignment: Alignment.topLeft,
