@@ -30,14 +30,14 @@ class TopNavBar extends StatelessWidget {
                   Text("Arkar.dev",style: context.textTheme.headlineSmall?.copyWith(color: context.colorScheme.primary,fontWeight: FontWeight.w600)),
                   const Spacer(),
                   if(Responsive.isDesktop(context))
-                  Row(
+                  const Row(
                     mainAxisSize: MainAxisSize.min,
                     spacing: 15,
                     children: [
-                      NavBarItem(isSelected: selectedNavBar==NavBarType.home, type: NavBarType.home),
-                      NavBarItem(isSelected: selectedNavBar==NavBarType.about, type: NavBarType.about),
-                      NavBarItem(isSelected: selectedNavBar==NavBarType.projects, type: NavBarType.projects),
-                      NavBarItem(isSelected: selectedNavBar==NavBarType.contact, type: NavBarType.contact),
+                      NavBarItem( type: NavBarType.home),
+                      NavBarItem(type: NavBarType.about),
+                      NavBarItem(type: NavBarType.projects),
+                      NavBarItem(type: NavBarType.contact),
                     ],
                   ),
                   const SizedBox(width: 20),

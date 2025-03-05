@@ -18,12 +18,12 @@ class ExperienceListItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
          VisibilityAnimationWidget(
-             animationType: VisibilityAnimationType.slideIn,
+             animationType: VisibilityAnimationType.fromRight,
              child: _indicator(context)),
           const SizedBox(width: 20),
           Expanded(
               child: VisibilityAnimationWidget(
-                  animationType: VisibilityAnimationType.slideIn,
+                  animationType: VisibilityAnimationType.fromRight,
                   child: _context(context))
           )
         ],

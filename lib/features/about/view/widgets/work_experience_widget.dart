@@ -15,7 +15,7 @@ class WorkExperienceWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           VisibilityAnimationWidget(
-              animationType: VisibilityAnimationType.slideIn,
+              animationType: VisibilityAnimationType.fromRight,
               child: Text("Work Experience",style: context.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700,color: context.colorScheme.primary))),
           const SizedBox(height: 10),
           ListView.builder(

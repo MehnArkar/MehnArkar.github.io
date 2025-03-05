@@ -45,8 +45,8 @@ class _AnimatedSocialIconState extends State<AnimatedSocialIcon> with SingleTick
             child: Stack(
               alignment: Alignment.center,
               children: [
-                Transform.translate(
-                    offset: Offset(_animationController.value * -60 ,  0),
+                Padding(
+                    padding: EdgeInsets.only(right: _animationController.value * 150),
                     child: InkWell(
                         borderRadius: BorderRadius.circular(100),
                         onTap: ()=>launchUrl(AppConstants.githubLaunchUri),
@@ -55,8 +55,8 @@ class _AnimatedSocialIconState extends State<AnimatedSocialIcon> with SingleTick
                     borderRadius: BorderRadius.circular(100),
                     onTap: ()=>launchUrl(AppConstants.linkedInLaunchUri),
                     child: SvgPicture.asset("${AppConstants.iconPath}/linkedIn.svg",width: widget.size,height: widget.size)),
-                Transform.translate(
-                    offset: Offset(_animationController.value * 60 ,  0),
+                Padding(
+                    padding: EdgeInsets.only(left: _animationController.value * 150),
                     child: InkWell(
                         borderRadius: BorderRadius.circular(100),
                         onTap: ()=>launchUrl(AppConstants.instagramLaunchUri),

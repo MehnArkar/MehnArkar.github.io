@@ -8,7 +8,7 @@ class AboutMeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VisibilityAnimationWidget(
-      animationType: VisibilityAnimationType.slideIn,
+      animationType: VisibilityAnimationType.fromRight,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,

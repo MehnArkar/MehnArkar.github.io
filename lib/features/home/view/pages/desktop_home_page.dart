@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/core/presentation/widgets/gradient_button.dart';
 import 'package:portfolio/app/core/presentation/widgets/screen_size_container.dart';
@@ -6,7 +5,6 @@ import 'package:portfolio/app/utils/constant/app_constants.dart';
 import 'package:portfolio/app/utils/extensions/animation_extension.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../widgets/animated_avatar.dart';
 import '../widgets/animated_tech_stack.dart';
 import '../widgets/bio_text.dart';
@@ -18,58 +16,81 @@ class DesktopHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Home page build");
     return ScreenSizeContainer(
       child: Stack(
         children: [
-          Center(
+          const Center(
             child: Row(
               children: [
-                Expanded(child: _bioPanel(context)),
-                Expanded(child: _avatarPanel(context)),
+                Expanded(child: BioPanel()),
+                Expanded(child: AvatarPanel()),
               ],
             ),
           ),
           Positioned(
-              left: 0,
-              bottom: context.sh*0.1,
-              child:_techStack(context)
-          )
+            left: 0,
+            bottom: context.sh * 0.1,
+            child: const TechStack(),
+          ),
         ],
       ),
     );
   }
+}
 
-  Widget _bioPanel(BuildContext context){
+class BioPanel extends StatelessWidget {
+  const BioPanel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         const NameText().slideUpAnimation(),
         const PositionText().slideUpAnimation(),
-        SizedBox(height: context.sh*0.05),
+        SizedBox(height: context.sh * 0.05),
         const BioText().slideUpAnimation(),
-        SizedBox(height: context.sh*0.05),
+        SizedBox(height: context.sh * 0.05),
         GradientButton(
-            label: "Contact Me",
-            onPressed: ()=>launchUrl(AppConstants.emailLaunchUri),
-        ).slideUpAnimation()
+          label: "Contact Me",
+          onPressed: () => launchUrl(AppConstants.emailLaunchUri),
+        ).slideUpAnimation(),
       ],
     );
   }
+}
 
-  Widget _avatarPanel(BuildContext context){
+class AvatarPanel extends StatelessWidget {
+  const AvatarPanel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return const Center(child: AnimatedAvatar(width: 300));
   }
+}
 
-  Widget _techStack(BuildContext context){
-    return  Row(
+class TechStack extends StatelessWidget {
+  const TechStack({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text("Tech Stack",style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700)),
-        Container(margin: EdgeInsets.symmetric(horizontal: context.sw*0.03),height: 30,width: 2,color: context.colorScheme.onSurfaceVariant),
-        const AnimatedTechStack()
+        Text(
+          "Tech Stack",
+          style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: context.sw * 0.03),
+          height: 30,
+          width: 2,
+          color: context.colorScheme.onSurfaceVariant,
+        ),
+        const AnimatedTechStack(),
       ],
     );
   }
-
 }

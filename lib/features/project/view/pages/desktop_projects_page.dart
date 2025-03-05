@@ -28,6 +28,7 @@ class _DesktopProjectsPageState extends State<DesktopProjectsPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("Projects page build");
     return ScreenSizeContainer(
         child: Stack(
           alignment: Alignment.topLeft,
@@ -46,7 +47,7 @@ class _DesktopProjectsPageState extends State<DesktopProjectsPage> {
                   Expanded(
                       flex: 3,
                       child:  VisibilityAnimationWidget(
-                          animationType: VisibilityAnimationType.slideIn,
+                          animationType: VisibilityAnimationType.fromRight,
                           child: BlocBuilder<ProjectSliderBloc,int>(
                             builder: (context,projectIndex) {
                               bool isNext = previousIndex == null || projectIndex > previousIndex!;

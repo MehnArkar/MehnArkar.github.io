@@ -5,7 +5,8 @@ import '../../../utils/constant/app_constants.dart';
 
 enum VisibilityAnimationType{
   slideUp,
-  slideIn
+  fromRight,
+  fromLeft
 }
 
 class VisibilityAnimationWidget extends StatefulWidget {
@@ -53,9 +54,14 @@ class _VisibilityAnimationWidgetState extends State<VisibilityAnimationWidget> w
   }
 
   final Map<VisibilityAnimationType,Effect<dynamic>> animations = {
-    VisibilityAnimationType.slideIn:const SlideEffect(
+    VisibilityAnimationType.fromRight:const SlideEffect(
         duration: AppConstants.animationDuration,
         begin: Offset(0.3, 0.0),
+        end: Offset(0.0, 0.0)
+    ),
+    VisibilityAnimationType.fromLeft:const SlideEffect(
+        duration: AppConstants.animationDuration,
+        begin: Offset(-0.3, 0.0),
         end: Offset(0.0, 0.0)
     ),
     VisibilityAnimationType.slideUp:const SlideEffect(
@@ -63,6 +69,7 @@ class _VisibilityAnimationWidgetState extends State<VisibilityAnimationWidget> w
         begin: Offset(0, 3.0),
         end: Offset(0.0, 0.0)
     ),
+
   };
 
 }

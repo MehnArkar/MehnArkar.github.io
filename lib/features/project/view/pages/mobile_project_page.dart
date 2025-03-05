@@ -39,7 +39,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
           ProjectMockup(height: context.sh*0.25),
           const SizedBox(height: 20),
           VisibilityAnimationWidget(
-              animationType: VisibilityAnimationType.slideIn,
+              animationType: VisibilityAnimationType.fromRight,
               child: BlocBuilder<ProjectSliderBloc,int>(
                   builder: (context,projectIndex){
                     bool isNext = previousIndex == null || projectIndex > previousIndex!;

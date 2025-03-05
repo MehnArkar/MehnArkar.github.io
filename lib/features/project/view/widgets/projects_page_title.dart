@@ -9,7 +9,7 @@ class ProjectsPageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VisibilityAnimationWidget(
-        animationType: VisibilityAnimationType.slideIn,
+        animationType: VisibilityAnimationType.fromRight,
         child: GradientText("Featured Projects",style: context.textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w700)));
   }
 }
