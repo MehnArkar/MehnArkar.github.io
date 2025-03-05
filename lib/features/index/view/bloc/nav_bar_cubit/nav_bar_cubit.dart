@@ -10,6 +10,8 @@ class NavBarCubit extends Cubit<NavBarType>{
   final GlobalKey projectsKey = GlobalKey();
   final GlobalKey contactKey = GlobalKey();
 
+  bool shouldListenScrollView = true;
+
   void onSelectedNavBar(NavBarType type){
     emit(type);
   }

@@ -9,7 +9,8 @@ import 'animated_theme_switch_button.dart';
 import 'nav_bar_item.dart';
 
 class TopNavBar extends StatelessWidget {
-  const TopNavBar({super.key});
+  final  Function(NavBarType navBarType)? onClickNavBar;
+  const TopNavBar({super.key,this.onClickNavBar});
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +31,14 @@ class TopNavBar extends StatelessWidget {
                   Text("Arkar.dev",style: context.textTheme.headlineSmall?.copyWith(color: context.colorScheme.primary,fontWeight: FontWeight.w600)),
                   const Spacer(),
                   if(Responsive.isDesktop(context))
-                  const Row(
+                   Row(
                     mainAxisSize: MainAxisSize.min,
                     spacing: 15,
                     children: [
-                      NavBarItem( type: NavBarType.home),
-                      NavBarItem(type: NavBarType.about),
-                      NavBarItem(type: NavBarType.projects),
-                      NavBarItem(type: NavBarType.contact),
+                      NavBarItem(type: NavBarType.home,onClickNavBar: onClickNavBar),
+                      NavBarItem(type: NavBarType.about,onClickNavBar: onClickNavBar,),
+                      NavBarItem(type: NavBarType.projects,onClickNavBar: onClickNavBar),
+                      NavBarItem(type: NavBarType.contact,onClickNavBar: onClickNavBar),
                     ],
                   ),
                   const SizedBox(width: 20),

@@ -6,7 +6,8 @@ import '../bloc/nav_bar_cubit/nav_bar_cubit.dart';
 
 class NavBarItem extends StatefulWidget {
   final NavBarType type;
-  const NavBarItem({super.key,required this.type});
+  final  Function(NavBarType navBarType)? onClickNavBar;
+  const NavBarItem({super.key,required this.type,this.onClickNavBar});
 
   @override
   State<NavBarItem> createState() => _NavBarItemState();
@@ -25,7 +26,10 @@ class _NavBarItemState extends State<NavBarItem> {
           focusColor: Colors.transparent,
           hoverColor: Colors.transparent,
           splashColor: Colors.transparent,
-          onTap: () => context.read<NavBarCubit>().onSelectedNavBar(widget.type),
+          onTap: () {
+            context.read<NavBarCubit>().onSelectedNavBar(widget.type);
+            if(widget.onClickNavBar!=null) widget.onClickNavBar!(widget.type);
+          },
           child: MouseRegion(
             onHover: (_) => setState(() {
               isHovered = true;

@@ -10,6 +10,7 @@ import 'package:portfolio/features/index/view/widgets/page_indicator.dart';
 import 'package:portfolio/features/project/view/pages/mobile_project_page.dart';
 import 'package:portfolio/features/project/view_model/project_bloc/project_bloc.dart';
 import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
+import '../../../../app/utils/constant/app_constants.dart';
 import '../../../../app/utils/service_locator.dart';
 import '../../../about/view/pages/desktop_about_page.dart';
 import '../../../about/view/pages/mobile_about_page.dart';
@@ -21,132 +22,186 @@ import '../bloc/nav_bar_cubit/nav_bar_cubit.dart';
 import '../widgets/cursor_widget.dart';
 import '../widgets/top_nav_bar.dart';
 
-class IndexPage extends StatelessWidget {
-   IndexPage._();
-   final ScrollController _scrollController =  ScrollController();
+class IndexPage extends StatefulWidget {
+  const IndexPage._();
 
-
-  static Widget create(){
+  static Widget create() {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=>injector.get<CursorCubit>()),
-        BlocProvider(create: (context)=>injector.get<NavBarCubit>()),
-        BlocProvider(create: (_)=>injector.get<ProjectBloc>()),
-        BlocProvider(create: (_)=>injector.get<ProjectSliderBloc>())
+        BlocProvider(create: (context) => injector.get<CursorCubit>()),
+        BlocProvider(create: (context) => injector.get<NavBarCubit>()),
+        BlocProvider(create: (_) => injector.get<ProjectBloc>()),
+        BlocProvider(create: (_) => injector.get<ProjectSliderBloc>()),
       ],
-      child: IndexPage._(),
+      child: const IndexPage._(),
     );
   }
+
+  @override
+  State<IndexPage> createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  final ScrollController _scrollController = ScrollController();
+  Map<NavBarType, RenderBox?> pageRenderBox = {};
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _getPagePosition();
+    });
+    _initializeScrollListener();
+  }
+
+  @override
+  void didUpdateWidget(IndexPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget != widget) {
+      _initializeScrollListener();
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_changeNavBarByPosition);
+    super.dispose();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorScheme.surface,
-      body: BlocListener<NavBarCubit,NavBarType>(
-        listener: (context,state)=>_scrollToPage(context,state ),
-        child: BlocBuilder<CursorCubit,Offset>(
-            builder: (context,state) {
-            return MouseRegion(
-              onHover: (event)=> context.read<CursorCubit>().onCursorChange(event.position),
-              child:  SizedBox(
-                width: double.maxFinite,
-                height: context.sh,
-                child: Stack(
-                  alignment: Alignment.topCenter,
-                  children: [
-                    ///Page context
-                    SizedBox(
-                      width: double.maxFinite,
-                      height: context.sh,
-                      child: SingleChildScrollView(
-                        controller: _scrollController,
-                        child: Column(
-                          children:  [
-                            //Home Page
-                            ResponsiveLayout(
-                               key: context.read<NavBarCubit>().homeKey,
-                                mobile:  const MobileHomePage(),
-                                tablet:  const MobileHomePage(),
-                                desktop:  const DesktopHomePage(),
-                            ),
-                            //About Page
-                            ResponsiveLayout(
-                              key: context.read<NavBarCubit>().aboutKey,
-                              desktop: const DesktopAboutPage(),
-                              mobile: const MobileAboutPage(),
-                              tablet: const MobileAboutPage(),
-                            ),
-                            //Featured Projects Page
-                            ResponsiveLayout(
-                              key: context.read<NavBarCubit>().projectsKey,
-                              desktop: const DesktopProjectsPage(),
-                              mobile:  const MobileProjectPage(),
-                              tablet:  const MobileProjectPage(),
-                            ),
-
-                             //Contact Page
-                            ResponsiveLayout(
-                                 key: context.read<NavBarCubit>().contactKey,
-                              mobile:  const MobileContactPage(),
-                              tablet:  const MobileContactPage(),
-                              desktop: const DesktopContactPage()
-                            )
-                          ],
-                        ),
+      body: BlocBuilder<CursorCubit, Offset>(
+        builder: (context, state) {
+          return MouseRegion(
+            onHover: (event) => context.read<CursorCubit>().onCursorChange(event.position),
+            child: SizedBox(
+              width: double.maxFinite,
+              height: context.sh,
+              child: Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  SizedBox(
+                    width: double.maxFinite,
+                    height: context.sh,
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Column(
+                        children: [
+                          ResponsiveLayout(
+                            key: context.read<NavBarCubit>().homeKey,
+                            mobile: const MobileHomePage(),
+                            tablet: const MobileHomePage(),
+                            desktop: const DesktopHomePage(),
+                          ),
+                          ResponsiveLayout(
+                            key: context.read<NavBarCubit>().aboutKey,
+                            desktop: const DesktopAboutPage(),
+                            mobile: const MobileAboutPage(),
+                            tablet: const MobileAboutPage(),
+                          ),
+                          ResponsiveLayout(
+                            key: context.read<NavBarCubit>().projectsKey,
+                            desktop: const DesktopProjectsPage(),
+                            mobile: const MobileProjectPage(),
+                            tablet: const MobileProjectPage(),
+                          ),
+                          ResponsiveLayout(
+                            key: context.read<NavBarCubit>().contactKey,
+                            mobile: const MobileContactPage(),
+                            tablet: const MobileContactPage(),
+                            desktop: const DesktopContactPage(),
+                          ),
+                        ],
                       ),
                     ),
-
-                    /// NavBar
-                    const TopNavBar(),
-
-                    /// Page Indicator
-                    if(Responsive.isDesktop(context))
-                    Positioned(
-                        top: 0,
-                        bottom: 0,
-                        left: 0,
-                        child: PageIndicator(scrollController: _scrollController)
+                  ),
+                  TopNavBar(onClickNavBar: (navBarType) => _scrollToPageOnNavBarChange(context, navBarType)),
+                  if (Responsive.isDesktop(context))
+                    const Positioned(
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      child: PageIndicator(),
                     ),
-
-
-                    /// Cursor
-                    if(Responsive.isDesktop(context))
+                  if (Responsive.isDesktop(context))
                     const CursorWidget(),
-                  ],
-                ),
+                ],
               ),
-            );
-          }
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 
-  void _scrollToPage(BuildContext context,NavBarType type){
-    // // Find the RenderBox of the target widget
-    // final RenderBox? renderBox = context.read<NavBarCubit>().getNavBarKey(type).currentContext?.findRenderObject() as RenderBox?;
-    //
-    // if (renderBox != null) {
-    //   // Get the position of the target widget relative to the ListView
-    //   final position = renderBox.localToGlobal(Offset.zero);
-    //
-    //   // Get the current scroll position and viewport dimensions
-    //   final scrollOffset = _scrollController.offset;
-    //
-    //   //Calculate the precise scroll position
-    //   double targetScrollOffset = position.dy + scrollOffset;
-    //
-    //   // Animate to the calculated position
-    //   _scrollController.animateTo(
-    //     targetScrollOffset,
-    //     duration: const Duration(milliseconds: 500),
-    //     curve: Curves.easeInOut,
-    //   );
-    // }
-
+  void _initializeScrollListener() {
+    _scrollController.removeListener(_changeNavBarByPosition);
+    _scrollController.addListener(_changeNavBarByPosition);
   }
 
+  Future<void> _scrollToPageOnNavBarChange(BuildContext context, NavBarType type) async {
+    NavBarCubit navBarCubit = context.read<NavBarCubit>();
+    final RenderBox? renderBox = navBarCubit.getNavBarKey(type).currentContext?.findRenderObject() as RenderBox?;
+
+    if (renderBox != null) {
+      final position = renderBox.localToGlobal(Offset.zero);
+      final scrollOffset = _scrollController.offset;
+      double targetScrollOffset = position.dy + scrollOffset;
+
+      navBarCubit.shouldListenScrollView = false;
+      await _scrollController.animateTo(
+        targetScrollOffset,
+        duration: AppConstants.animationDuration,
+        curve: Curves.easeInOut,
+      );
+      navBarCubit.shouldListenScrollView = true;
+    }
+  }
+
+  void _changeNavBarByPosition() {
+    if (context.read<NavBarCubit>().shouldListenScrollView) {
+      final navBarCubit = context.read<NavBarCubit>();
+      final currentNavBar = navBarCubit.state;
+      final scrollOffset = _scrollController.offset;
+
+      final candidateNavBar = _determineNavBarForOffset(scrollOffset);
+      if (candidateNavBar != null && currentNavBar != candidateNavBar) {
+        navBarCubit.onSelectedNavBar(candidateNavBar);
+      }
+    }
+  }
+
+  NavBarType? _determineNavBarForOffset(double offset) {
+    final navBarPriority = [
+      NavBarType.contact,
+      NavBarType.projects,
+      NavBarType.about,
+      NavBarType.home,
+    ];
+
+    for (final navType in navBarPriority) {
+      if (_isOffsetInSection(offset, navType)) {
+        return navType;
+      }
+    }
+    return null;
+  }
+
+  bool _isOffsetInSection(double offset, NavBarType navType) {
+    final renderBox = pageRenderBox[navType]!;
+    final sectionPosition = renderBox.localToGlobal(Offset.zero).dy + offset;
+    final sectionThreshold = sectionPosition - renderBox.size.height * 0.5;
+    return offset > sectionThreshold;
+  }
+
+  void _getPagePosition() {
+    for (var navBarType in NavBarType.values) {
+      final RenderBox? renderBox = context.read<NavBarCubit>().getNavBarKey(navBarType).currentContext?.findRenderObject() as RenderBox?;
+      pageRenderBox[navBarType] = renderBox;
+    }
+  }
 }
-
-
-
