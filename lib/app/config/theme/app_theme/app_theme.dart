@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/config/theme/dimension/app_dimension.dart';
-import 'package:portfolio/app/config/theme/dimension/desktop_dimension.dart';
 import 'package:portfolio/app/utils/constant/app_constants.dart';
 import '../../../utils/responsive/device_screen_type.dart';
 import '../../../utils/responsive/responsive.dart';

@@ -7,6 +7,7 @@ import 'package:portfolio/features/contact/view/pages/desktop_contact_page.dart'
 import 'package:portfolio/features/contact/view/pages/mobile_contact_page.dart';
 import 'package:portfolio/features/index/data/models/nab_bar_type.dart';
 import 'package:portfolio/features/index/view/widgets/page_indicator.dart';
+import 'package:portfolio/features/index/view/widgets/social_media_overlay.dart';
 import 'package:portfolio/features/project/view/pages/mobile_project_page.dart';
 import 'package:portfolio/features/project/view_model/project_bloc/project_bloc.dart';
 import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
@@ -41,34 +42,39 @@ class IndexPage extends StatefulWidget {
   State<IndexPage> createState() => _IndexPageState();
 }
 
-class _IndexPageState extends State<IndexPage> {
+class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver {
   final ScrollController _scrollController = ScrollController();
   Map<NavBarType, RenderBox?> pageRenderBox = {};
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _getPagePosition();
+      if (Responsive.isDesktop(context)) {
+        _getPagePosition();
+        _initializeScrollListener();
+      }
     });
-    _initializeScrollListener();
   }
 
   @override
-  void didUpdateWidget(IndexPage oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget != widget) {
-      _initializeScrollListener();
-    }
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (Responsive.isDesktop(context)) {
+        _getPagePosition();
+        _initializeScrollListener();
+      }
+    });
   }
 
   @override
   void dispose() {
     _scrollController.removeListener(_changeNavBarByPosition);
+    _scrollController.dispose(); // Add proper disposal
     super.dispose();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +83,8 @@ class _IndexPageState extends State<IndexPage> {
       body: BlocBuilder<CursorCubit, Offset>(
         builder: (context, state) {
           return MouseRegion(
-            onHover: (event) => context.read<CursorCubit>().onCursorChange(event.position),
+            onHover: (event) =>
+                context.read<CursorCubit>().onCursorChange(event.position),
             child: SizedBox(
               width: double.maxFinite,
               height: context.sh,
@@ -119,7 +126,9 @@ class _IndexPageState extends State<IndexPage> {
                       ),
                     ),
                   ),
-                  TopNavBar(onClickNavBar: (navBarType) => _scrollToPageOnNavBarChange(context, navBarType)),
+                  TopNavBar(
+                      onClickNavBar: (navBarType) =>
+                          _scrollToPageOnNavBarChange(context, navBarType)),
                   if (Responsive.isDesktop(context))
                     const Positioned(
                       top: 0,
@@ -128,7 +137,12 @@ class _IndexPageState extends State<IndexPage> {
                       child: PageIndicator(),
                     ),
                   if (Responsive.isDesktop(context))
-                    const CursorWidget(),
+                    Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: SocialMediaOverlay(
+                            scrollController: _scrollController)),
+                  if (Responsive.isDesktop(context)) const CursorWidget(),
                 ],
               ),
             ),
@@ -139,13 +153,16 @@ class _IndexPageState extends State<IndexPage> {
   }
 
   void _initializeScrollListener() {
-    _scrollController.removeListener(_changeNavBarByPosition);
     _scrollController.addListener(_changeNavBarByPosition);
   }
 
-  Future<void> _scrollToPageOnNavBarChange(BuildContext context, NavBarType type) async {
+  Future<void> _scrollToPageOnNavBarChange(
+      BuildContext context, NavBarType type) async {
     NavBarCubit navBarCubit = context.read<NavBarCubit>();
-    final RenderBox? renderBox = navBarCubit.getNavBarKey(type).currentContext?.findRenderObject() as RenderBox?;
+    final RenderBox? renderBox = navBarCubit
+        .getNavBarKey(type)
+        .currentContext
+        ?.findRenderObject() as RenderBox?;
 
     if (renderBox != null) {
       final position = renderBox.localToGlobal(Offset.zero);
@@ -200,7 +217,11 @@ class _IndexPageState extends State<IndexPage> {
 
   void _getPagePosition() {
     for (var navBarType in NavBarType.values) {
-      final RenderBox? renderBox = context.read<NavBarCubit>().getNavBarKey(navBarType).currentContext?.findRenderObject() as RenderBox?;
+      final RenderBox? renderBox = context
+          .read<NavBarCubit>()
+          .getNavBarKey(navBarType)
+          .currentContext
+          ?.findRenderObject() as RenderBox?;
       pageRenderBox[navBarType] = renderBox;
     }
   }

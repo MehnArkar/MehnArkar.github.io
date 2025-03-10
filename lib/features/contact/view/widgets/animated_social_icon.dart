@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/app/utils/constant/app_constants.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio/features/contact/view/widgets/social_icon_widget.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class AnimatedSocialIcon extends StatefulWidget {
@@ -47,20 +46,26 @@ class _AnimatedSocialIconState extends State<AnimatedSocialIcon> with SingleTick
               children: [
                 Padding(
                     padding: EdgeInsets.only(right: _animationController.value * 150),
-                    child: InkWell(
-                        borderRadius: BorderRadius.circular(100),
-                        onTap: ()=>launchUrl(AppConstants.githubLaunchUri),
-                        child: SvgPicture.asset("${AppConstants.iconPath}/github.svg",width: widget.size,height: widget.size))),
-                InkWell(
-                    borderRadius: BorderRadius.circular(100),
-                    onTap: ()=>launchUrl(AppConstants.linkedInLaunchUri),
-                    child: SvgPicture.asset("${AppConstants.iconPath}/linkedIn.svg",width: widget.size,height: widget.size)),
+                    child: SocialIconWidget(
+                        iconName: "github.svg",
+                        iconSize: widget.size,
+                        uri: AppConstants.githubLaunchUri)
+                ),
+
+                SocialIconWidget(
+                    iconName: "linkedIn.svg",
+                    uri: AppConstants.linkedInLaunchUri,
+                    iconSize: widget.size,
+                ),
+
                 Padding(
                     padding: EdgeInsets.only(left: _animationController.value * 150),
-                    child: InkWell(
-                        borderRadius: BorderRadius.circular(100),
-                        onTap: ()=>launchUrl(AppConstants.instagramLaunchUri),
-                        child: SvgPicture.asset("${AppConstants.iconPath}/instagram.svg",width: widget.size,height: widget.size))),
+                    child: SocialIconWidget(
+                      iconName: "instagram.svg",
+                      uri: AppConstants.instagramLaunchUri,
+                      iconSize: widget.size,
+                    )
+                ),
               ]
             ),
           );

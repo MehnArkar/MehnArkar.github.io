@@ -133,7 +133,4 @@ class _ProjectMockupState extends State<ProjectMockup> with SingleTickerProvider
  }
 }
 
-extension on num {
-  double get degrees => this * (3.141592653589793 / 180);
-}
 
