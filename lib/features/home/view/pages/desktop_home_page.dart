@@ -10,6 +10,7 @@ import '../widgets/animated_tech_stack.dart';
 import '../widgets/bio_text.dart';
 import '../widgets/name_text.dart';
 import '../widgets/position_text.dart';
+import 'package:lottie/lottie.dart';
 
 class DesktopHomePage extends StatelessWidget {
   const DesktopHomePage({super.key});
@@ -32,6 +33,19 @@ class DesktopHomePage extends StatelessWidget {
             bottom: context.sh * 0.1,
             child: const TechStack(),
           ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 20,
+            child: Center(
+              child: Lottie.asset(
+                "assets/lottie/mouse_scroll.json",
+                width: 50,
+                fit: BoxFit.fitWidth
+                        
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -80,7 +94,8 @@ class TechStack extends StatelessWidget {
       children: [
         Text(
           "Tech Stack",
-          style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700),
+          style: context.textTheme.bodyLarge
+              ?.copyWith(fontWeight: FontWeight.w700),
         ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: context.sw * 0.03),
