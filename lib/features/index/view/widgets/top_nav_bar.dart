@@ -50,5 +50,6 @@ class TopNavBar extends StatelessWidget {
         ),
       ),
     );
+  
   }
 }

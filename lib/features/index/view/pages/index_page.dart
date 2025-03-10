@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/app/config/theme/dimension/app_dimension.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
 import 'package:portfolio/app/utils/responsive/responsive.dart';
 import 'package:portfolio/app/utils/responsive/responsive_layout.dart';
 import 'package:portfolio/features/contact/view/pages/desktop_contact_page.dart';
 import 'package:portfolio/features/contact/view/pages/mobile_contact_page.dart';
 import 'package:portfolio/features/index/data/models/nab_bar_type.dart';
+import 'package:portfolio/features/index/view/widgets/bottom_nav_bar.dart';
 import 'package:portfolio/features/index/view/widgets/page_indicator.dart';
 import 'package:portfolio/features/index/view/widgets/social_media_overlay.dart';
 import 'package:portfolio/features/project/view/pages/mobile_project_page.dart';
@@ -51,10 +53,8 @@ class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (Responsive.isDesktop(context)) {
         _getPagePosition();
         _initializeScrollListener();
-      }
     });
   }
 
@@ -62,10 +62,8 @@ class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver {
   void didChangeMetrics() {
     super.didChangeMetrics();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (Responsive.isDesktop(context)) {
         _getPagePosition();
         _initializeScrollListener();
-      }
     });
   }
 
@@ -142,6 +140,9 @@ class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver {
                         right: 0,
                         child: SocialMediaOverlay(
                             scrollController: _scrollController)),
+                  if (!Responsive.isDesktop(context))
+                    Positioned(left: AppDimension.mobilePagePadding, right: AppDimension.mobilePagePadding, bottom: 25 , child: BottomNavBar(onClickNavBar: (navBarType) =>
+                          _scrollToPageOnNavBarChange(context, navBarType))),
                   if (Responsive.isDesktop(context)) const CursorWidget(),
                 ],
               ),

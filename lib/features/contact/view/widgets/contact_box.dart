@@ -92,7 +92,7 @@ class _ContactBoxState extends State<ContactBox> with SingleTickerProviderStateM
         color: context.colorScheme.primary.withOpacity(0.25),
           borderRadius: BorderRadius.circular(AppDimension.borderRadius)
       ),
-      child: SvgPicture.asset("${AppConstants.iconPath}/email.svg",color: context.colorScheme.primary,width: 30,height: 30),
+      child: SvgPicture.asset("${AppConstants.iconPath}/mail.svg",color: context.colorScheme.primary,width: 30,height: 30),
 
     );
   }
