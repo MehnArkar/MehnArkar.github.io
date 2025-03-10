@@ -45,7 +45,11 @@ dependencies:
   rive: ^0.13.20
   flutter_animate: ^4.5.2
   url_launcher: ^6.3.1
-  blobs: ^2.0.0
+  wave_blob: ^1.0.0
+  dotted_border: ^2.1.0
+  intl: ^0.20.2
+  visibility_detector: ^0.4.0+2
+  lottie: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +82,7 @@ flutter:
     - assets/icons/
     - assets/fonts/
     - assets/animations/
+    - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

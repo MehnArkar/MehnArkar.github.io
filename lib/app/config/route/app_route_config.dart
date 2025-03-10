@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/app/config/route/app_routes.dart';
-import 'package:portfolio/features/index/presentation/pages/index_page.dart';
+
+import '../../../features/index/view/pages/index_page.dart';
 
 class AppRouteConfig {
 
