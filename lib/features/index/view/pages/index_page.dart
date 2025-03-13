@@ -52,7 +52,7 @@ class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((duration) {
         _getPagePosition();
         _initializeScrollListener();
     });
@@ -124,9 +124,7 @@ class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver {
                       ),
                     ),
                   ),
-                  TopNavBar(
-                      onClickNavBar: (navBarType) =>
-                          _scrollToPageOnNavBarChange(context, navBarType)),
+                  TopNavBar(onClickNavBar: (navBarType) =>_scrollToPageOnNavBarChange(context, navBarType)),
                   if (Responsive.isDesktop(context))
                     const Positioned(
                       top: 0,

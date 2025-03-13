@@ -42,7 +42,7 @@ class _DesktopProjectsPageState extends State<DesktopProjectsPage> {
                   Expanded(
                       flex: 2,
                       child:
-                          Center(child: ProjectMockup(height: context.sw * 0.23))),
+                          Center(child: ProjectMockup(height: context.sw * 0.23,animationType: VisibilityAnimationType.fromLeft,))),
                   Expanded(
                       flex: 3,
                       child:  VisibilityAnimationWidget(

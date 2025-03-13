@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/app/core/presentation/bloc/theme_cubit/theme_cubit.dart';
+import 'package:portfolio/app/core/presentation/bloc/theme_cubit/theme_state.dart';
 import 'package:portfolio/app/core/presentation/widgets/gradient_button.dart';
 import 'package:portfolio/app/core/presentation/widgets/screen_size_container.dart';
 import 'package:portfolio/app/utils/constant/app_constants.dart';
@@ -28,22 +31,19 @@ class DesktopHomePage extends StatelessWidget {
               ],
             ),
           ),
+
           Positioned(
             left: 0,
             bottom: context.sh * 0.1,
             child: const TechStack(),
           ),
-          Positioned(
+
+          const Positioned(
             left: 0,
             right: 0,
             bottom: 20,
             child: Center(
-              child: Lottie.asset(
-                "assets/lottie/mouse_scroll.json",
-                width: 50,
-                fit: BoxFit.fitWidth
-                        
-              ),
+              child:AnimatedMouseScroll(),
             ),
           )
         ],
@@ -108,3 +108,22 @@ class TechStack extends StatelessWidget {
     );
   }
 }
+
+class AnimatedMouseScroll extends StatelessWidget {
+  const AnimatedMouseScroll({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  BlocBuilder<ThemeCubit,ThemeState>(
+      builder: (context,state) {
+        return Lottie.asset(
+            state is LightTheme ? "assets/lottie/mouse_scroll.json" :  "assets/lottie/mouse_scroll_dark.json",
+            width: 50,
+            fit: BoxFit.fitWidth
+
+        );
+      }
+    );
+  }
+}
+
