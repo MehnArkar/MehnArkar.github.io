@@ -180,23 +180,26 @@ class MobileProjectPage extends StatelessWidget {
                   effects: _slideUpEffect,
                   child:
                       Center(child: ProjectMockup(height: context.sh * 0.18))),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    width: double.maxFinite,
-                    child: Text(project.name,
-                        style: context.textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: context.colorScheme.primary)),
-                  ),
-                  SizedBox(height: context.sh*0.01),
-                  Text(
-                    project.description,
-                    style: context.textTheme.bodyLarge
-                        ?.copyWith(fontWeight: FontWeight.w600, height: 1.75),
-                  ),
-                ],
+              VisibilityAnimationWidget(
+                effects: _slideUpEffect,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      width: double.maxFinite,
+                      child: Text(project.name,
+                          style: context.textTheme.titleLarge?.copyWith(
+                              fontWeight: FontWeight.w700,
+                              color: context.colorScheme.primary)),
+                    ),
+                    SizedBox(height: context.sh*0.01),
+                    Text(
+                      project.description,
+                      style: context.textTheme.bodyLarge
+                          ?.copyWith(fontWeight: FontWeight.w600, height: 1.75),
+                    ),
+                  ],
+                ),
               ),
               VisibilityAnimationWidget(
                 effects: _slideUpEffect,

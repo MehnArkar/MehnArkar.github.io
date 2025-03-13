@@ -10,8 +10,9 @@ class VisibilityAnimationWidget extends StatefulWidget {
   final Widget child;
   final VisibilityAnimationType? animationType;
   final List<Effect>? effects;
+  final double visibilityThreshold;
   const VisibilityAnimationWidget(
-      {super.key, this.animationType, required this.child, this.effects});
+      {super.key, this.animationType, required this.child, this.effects,this.visibilityThreshold = 0.5});
 
   @override
   State<VisibilityAnimationWidget> createState() =>
@@ -40,7 +41,7 @@ class _VisibilityAnimationWidgetState extends State<VisibilityAnimationWidget>
         key: UniqueKey(),
         onVisibilityChanged: (visibilityInfo) {
           var visiblePercentage = visibilityInfo.visibleFraction;
-          if (visiblePercentage >= 0.5) {
+          if (visiblePercentage >= widget.visibilityThreshold) {
             _animationController.forward();
           }
         },

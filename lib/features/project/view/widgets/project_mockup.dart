@@ -27,8 +27,7 @@ class _ProjectMockupState extends State<ProjectMockup>
 
   @override
   void initState() {
-    _animationController = AnimationController(
-        vsync: this, duration: AppConstants.animationDuration);
+    _animationController = AnimationController(vsync: this, duration: AppConstants.animationDuration);
     super.initState();
   }
 
