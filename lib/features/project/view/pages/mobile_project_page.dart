@@ -145,7 +145,7 @@ class MobileProjectPage extends StatelessWidget {
           const SizedBox(height: 50),
           CarouselSlider(
               options: CarouselOptions(
-                  height: context.sh * 0.7,
+                  height: context.sh * 0.75,
                   viewportFraction: 0.8,
                   enlargeCenterPage: true),
               items: context

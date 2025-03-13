@@ -10,10 +10,12 @@ class VisibilityAnimationWidget extends StatefulWidget {
   final Widget child;
   final VisibilityAnimationType? animationType;
   final List<Effect>? effects;
-  const VisibilityAnimationWidget({super.key, this.animationType, required this.child,this.effects});
+  const VisibilityAnimationWidget(
+      {super.key, this.animationType, required this.child, this.effects});
 
   @override
-  State<VisibilityAnimationWidget> createState() => _VisibilityAnimationWidgetState();
+  State<VisibilityAnimationWidget> createState() =>
+      _VisibilityAnimationWidgetState();
 }
 
 class _VisibilityAnimationWidgetState extends State<VisibilityAnimationWidget>
@@ -24,6 +26,12 @@ class _VisibilityAnimationWidgetState extends State<VisibilityAnimationWidget>
   void initState() {
     super.initState();
     _animationController = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -41,15 +49,15 @@ class _VisibilityAnimationWidgetState extends State<VisibilityAnimationWidget>
             autoPlay: false,
             effects: widget.effects != null && widget.effects!.isNotEmpty
                 ? widget.effects
-                : widget.animationType!=null
-            ?[
-            animations[widget.animationType]!,
-            const FadeEffect(
-                duration: AppConstants.animationDuration,
-                begin: 0,
-                end: 1)
-            ]
-                :[],
+                : widget.animationType != null
+                    ? [
+                        animations[widget.animationType]!,
+                        const FadeEffect(
+                            duration: AppConstants.animationDuration,
+                            begin: 0,
+                            end: 1)
+                      ]
+                    : [],
             child: widget.child));
   }
 

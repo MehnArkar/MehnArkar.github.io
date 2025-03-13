@@ -93,7 +93,7 @@ class ExperienceListItem extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 15),
-        Text(workExperience.description,style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
+        Text(workExperience.description,style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600)),
         const SizedBox(height: 25),
       ],
     );

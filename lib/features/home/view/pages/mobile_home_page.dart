@@ -27,14 +27,14 @@ class MobileHomePage extends StatelessWidget {
           const NameText().slideUpAnimation(),
           const SizedBox(height: AppDimension.mobilePaddingSmallS),
           const PositionText().slideUpAnimation(),
-          SizedBox(height: context.sh*0.0),
+          SizedBox(height: context.sh*0.05),
           const BioText().slideUpAnimation(),
-          SizedBox(height: context.sh*0.1),
+          SizedBox(height: context.sh*0.05),
           GradientButton(
             label: "Contact Me",
             onPressed: ()=>launchUrl(AppConstants.emailLaunchUri),
           ).slideUpAnimation(),
-          SizedBox(height: context.sh*0.05),
+          SizedBox(height: context.sh*0.1),
           Align(
               alignment: Alignment.centerLeft,
               child: _techStack(context))
