@@ -27,9 +27,9 @@ class MobileHomePage extends StatelessWidget {
           const NameText().slideUpAnimation(),
           const SizedBox(height: AppDimension.mobilePaddingSmallS),
           const PositionText().slideUpAnimation(),
-          SizedBox(height: context.sh*0.05),
+          SizedBox(height: context.sh*0.0),
           const BioText().slideUpAnimation(),
-          SizedBox(height: context.sh*0.05),
+          SizedBox(height: context.sh*0.1),
           GradientButton(
             label: "Contact Me",
             onPressed: ()=>launchUrl(AppConstants.emailLaunchUri),
@@ -49,7 +49,7 @@ class MobileHomePage extends StatelessWidget {
       children: [
         Text("Tech Stack",style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700)),
         Container(margin: EdgeInsets.symmetric(horizontal: context.sw*0.03),height: 30,width: 2,color: context.colorScheme.onSurfaceVariant),
-        AnimatedTechStack(iconSize:30)
+        const AnimatedTechStack(iconSize:30)
       ],
     );
   }

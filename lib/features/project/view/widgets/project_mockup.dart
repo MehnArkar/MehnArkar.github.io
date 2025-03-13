@@ -14,7 +14,8 @@ import 'package:visibility_detector/visibility_detector.dart';
 
 class ProjectMockup extends StatefulWidget {
  final double height ;
-  const ProjectMockup({super.key,required this.height});
+ final VisibilityAnimationType? animationType;
+  const ProjectMockup({super.key,required this.height,this.animationType});
 
   @override
   State<ProjectMockup> createState() => _ProjectMockupState();
@@ -46,7 +47,7 @@ class _ProjectMockupState extends State<ProjectMockup> with SingleTickerProvider
           _animationController.forward();
         },
         child: VisibilityAnimationWidget(
-          animationType: VisibilityAnimationType.fromLeft,
+          animationType:widget.animationType,
           child: BlocBuilder<ProjectSliderBloc,int>(
             builder: (context,currentIndex) {
               Project currentProject = context.read<ProjectBloc>().state[currentIndex];

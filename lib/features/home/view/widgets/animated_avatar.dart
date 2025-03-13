@@ -47,7 +47,7 @@ class _AnimatedAvatarState extends State<AnimatedAvatar> {
     return MouseRegion(
       onEnter: (_)=>_happy?.fire(),
       child: GestureDetector(
-        onTap:()=>_thinking?.fire(),
+        onTap:()=>_hover?.fire(),
         child: SizedBox(
           width: widget.width,
           child: AspectRatio(
