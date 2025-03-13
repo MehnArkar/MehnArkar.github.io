@@ -17,7 +17,7 @@ class EducationWidget extends StatelessWidget {
           Text("Education",style: context.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700,color: context.colorScheme.primary)),
           const SizedBox(height: 10),
           Text("Bachelor of Computer Science ( Undergraduate )",style: context.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700)),
-          Text("University of Computer studies,  Hpa-An",style: context.textTheme.bodyMedium)
+          Text("University of Computer studies,  Hpa-An",style: context.textTheme.bodyLarge)
         ],
       ),
     );

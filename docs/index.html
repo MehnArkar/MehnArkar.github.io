@@ -31,8 +31,84 @@
 
   <title>portfolio</title>
   <link rel="manifest" href="manifest.json">
+
+  <script defer src="index.dart.js" type="application/javascript"></script>
+
+  <style>
+    .loader-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .loader {
+      color: #7B61FF;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-weight: bold;
+      font-size: 78px;
+      opacity: 0.8;
+    }
+    
+    .loader:before {
+      content: "{";
+      display: inline-block;
+      animation: pulse 0.4s alternate infinite ease-in-out;
+    }
+    
+    .loader:after {
+      content: "}";
+      display: inline-block;
+      animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      to {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+    }
+    
+    .fadeout {
+      animation: fadeout 1s forwards;
+    }
+    
+    @keyframes fadeout {
+      from {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      to {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+
 </head>
 <body>
+  <div id="loading_indicator" class="loader-container">
+    <span class="loader"></span>
+  </div>
+
   <script src="flutter_bootstrap.js" async></script>
+
+   <script>
+    window.onload = function() {
+      setTimeout(() => {
+        var loadingIndicator = document.getElementById("loading_indicator");
+        if(loadingIndicator) {
+          // Add fadeout class to trigger the animation
+          var loader = loadingIndicator.querySelector(".loader");
+          loader.classList.add("fadeout");
+          
+          // Remove the element after animation completes
+          setTimeout(() => {
+            loadingIndicator.remove();
+          }, 2500);
+        }
+      }, 2500);
+    }
+  </script>
 </body>
 </html>
