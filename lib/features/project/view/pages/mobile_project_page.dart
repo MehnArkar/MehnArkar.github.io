@@ -126,6 +126,7 @@ import 'package:portfolio/features/project/view/widgets/appstore_button.dart';
 import 'package:portfolio/features/project/view/widgets/playstore_button.dart';
 import 'package:portfolio/features/project/view/widgets/projects_page_title.dart';
 import 'package:portfolio/features/project/view_model/project_bloc/project_bloc.dart';
+import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
 import '../widgets/project_mockup.dart';
 
 class MobileProjectPage extends StatelessWidget {
@@ -147,7 +148,9 @@ class MobileProjectPage extends StatelessWidget {
               options: CarouselOptions(
                   height: context.sh * 0.75,
                   viewportFraction: 0.8,
-                  enlargeCenterPage: true),
+                  enlargeCenterPage: true,
+                  onPageChanged: (index,_)=>context.read<ProjectSliderBloc>().onChangeIndex(index)
+                  ),
               items: context
                   .read<ProjectBloc>()
                   .state

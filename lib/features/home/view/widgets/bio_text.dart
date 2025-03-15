@@ -7,7 +7,7 @@ class BioText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-        "Highly motivated mobile application developer with extensive experience in native and cross-platform mobile development. Passionate about creating innovative mobile apps and continually exploring the art of coding.",
+        "Highly motivated mobile application developer with extensive experience in cross-platform and native mobile development. Passionate about creating innovative mobile apps and continually exploring the art of coding.",
       style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600,height: 1.75),
     );
 

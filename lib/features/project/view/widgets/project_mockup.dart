@@ -107,7 +107,7 @@ class _ProjectMockupState extends State<ProjectMockup>
                             alignment: Alignment.bottomRight)
                       ],
                       child: Image.asset(
-                        currentProject.images.first,
+                        "${AppConstants.imagePath}/mockups/${currentProject.images.last}",
                         height: widget.height,
                         fit: BoxFit.cover,
                       )),
@@ -124,7 +124,7 @@ class _ProjectMockupState extends State<ProjectMockup>
                             alignment: Alignment.bottomLeft)
                       ],
                       child: Image.asset(
-                        currentProject.images.last,
+                        "${AppConstants.imagePath}/mockups/${currentProject.images.first}",
                         height: widget.height,
                         fit: BoxFit.cover,
                       )),

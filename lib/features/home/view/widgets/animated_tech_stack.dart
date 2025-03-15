@@ -7,7 +7,7 @@ class AnimatedTechStack extends StatelessWidget {
   final double? iconSize;
   const AnimatedTechStack({super.key, this.iconSize});
 
-  final List<String> techStackIcons = const ["flutter.svg","dart.svg","swift.svg","kotlin.svg"];
+  final List<String> techStackIcons = const ["flutter.svg","swift.svg","kotlin.svg","fastapi.svg"];
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class AnimatedTechStack extends StatelessWidget {
               delay:  Duration(milliseconds: 200*(index+1))
             )
           ],
-          child: SvgPicture.asset("${AppConstants.iconPath}/${techStackIcons[index]}",width: iconSize ?? 30,height: iconSize ?? 30)
+          child: SvgPicture.asset("${AppConstants.iconPath}/${techStackIcons[index]}",width: iconSize ?? 30,height: iconSize ?? 30,fit: BoxFit.cover,)
       )
       )
     );
