@@ -26,8 +26,8 @@ class DesktopHomePage extends StatelessWidget {
           const Center(
             child: Row(
               children: [
-                Expanded(child: BioPanel()),
-                Expanded(child: AvatarPanel()),
+                Expanded(child: _BioPanel()),
+                Expanded(child: _AvatarPanel()),
               ],
             ),
           ),
@@ -35,7 +35,7 @@ class DesktopHomePage extends StatelessWidget {
           Positioned(
             left: 0,
             bottom: context.sh * 0.1,
-            child: const TechStack(),
+            child: const _TechStack(),
           ),
 
           const Positioned(
@@ -43,17 +43,18 @@ class DesktopHomePage extends StatelessWidget {
             right: 0,
             bottom: 20,
             child: Center(
-              child:AnimatedMouseScroll(),
+              child:_AnimatedMouseScroll(),
             ),
           )
+        
         ],
       ),
     );
   }
 }
 
-class BioPanel extends StatelessWidget {
-  const BioPanel({super.key});
+class _BioPanel extends StatelessWidget {
+  const _BioPanel();
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +76,8 @@ class BioPanel extends StatelessWidget {
   }
 }
 
-class AvatarPanel extends StatelessWidget {
-  const AvatarPanel({super.key});
+class _AvatarPanel extends StatelessWidget {
+  const _AvatarPanel();
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +85,8 @@ class AvatarPanel extends StatelessWidget {
   }
 }
 
-class TechStack extends StatelessWidget {
-  const TechStack({super.key});
+class _TechStack extends StatelessWidget {
+  const _TechStack();
 
   @override
   Widget build(BuildContext context) {
@@ -109,8 +110,8 @@ class TechStack extends StatelessWidget {
   }
 }
 
-class AnimatedMouseScroll extends StatelessWidget {
-  const AnimatedMouseScroll({super.key});
+class _AnimatedMouseScroll extends StatelessWidget {
+  const _AnimatedMouseScroll();
 
   @override
   Widget build(BuildContext context) {
