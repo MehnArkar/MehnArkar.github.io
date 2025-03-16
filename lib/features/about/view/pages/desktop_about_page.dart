@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app/config/theme/dimension/app_dimension.dart';
-import 'package:portfolio/app/core/presentation/widgets/screen_size_container.dart';
 import 'package:portfolio/app/utils/extensions/context_extension.dart';
-import 'package:portfolio/app/utils/responsive/responsive.dart';
 import 'package:portfolio/features/about/data/repositories/experience_repository.dart';
 import 'package:portfolio/features/about/view/widgets/about_page_title.dart';
-
 import '../widgets/about_me_widget.dart';
 import '../widgets/education_widget.dart';
 import '../widgets/profile_image.dart';
