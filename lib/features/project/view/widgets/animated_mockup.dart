@@ -52,7 +52,7 @@ class AnimatedMockup extends StatelessWidget {
                           width: height,
                           height: height,
                           color: context.colorScheme.surface
-                              .withOpacity(0.1)),
+                              .withAlpha((0.1*255).toInt())),
                     ),
                   ),
                 ),
