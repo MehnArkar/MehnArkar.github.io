@@ -9,8 +9,9 @@ import 'package:portfolio/features/home/view/widgets/previous_button.dart';
 import 'package:portfolio/features/project/data/model/project.dart';
 import 'package:portfolio/features/project/view/widgets/about_this_project.dart';
 import 'package:portfolio/features/project/view/widgets/appstore_button.dart';
+import 'package:portfolio/features/project/view/widgets/desktop_mockup.dart';
 import 'package:portfolio/features/project/view/widgets/playstore_button.dart';
-import 'package:portfolio/features/project/view/widgets/project_mockup.dart';
+import 'package:portfolio/features/project/view/widgets/project_slider_indicator.dart';
 import 'package:portfolio/features/project/view_model/project_bloc/project_bloc.dart';
 import 'package:portfolio/features/project/view_model/project_slider_bloc/project_slider_bloc.dart';
 
@@ -42,7 +43,18 @@ class _DesktopProjectsPageState extends State<DesktopProjectsPage> {
                   Expanded(
                       flex: 2,
                       child:
-                          Center(child: ProjectMockup(height: context.sw * 0.23,animationType: VisibilityAnimationType.fromLeft,))),
+                          Center(child: BlocBuilder<ProjectSliderBloc,int>(
+                            builder: (context,index) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  DesktopMockup(height: context.sw * 0.23,animationType: VisibilityAnimationType.fromLeft),
+                                  SizedBox(height: (context.sw * 0.23)/10+25),
+                                  const ProjectSliderIndicator(dotSize: 8, spacing: 10)
+                                ],
+                              );
+                            }
+                          ))),
                   Expanded(
                       flex: 3,
                       child:  VisibilityAnimationWidget(

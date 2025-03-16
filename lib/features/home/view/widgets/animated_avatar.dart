@@ -12,11 +12,11 @@ class AnimatedAvatar extends StatefulWidget {
 class _AnimatedAvatarState extends State<AnimatedAvatar> {
 
   late StateMachineController controller;
-  SMITrigger? _idle;
+  // SMITrigger? _idle;
   SMITrigger? _hover;
   SMITrigger? _happy;
-  SMITrigger? _sad;
-  SMITrigger? _thinking;
+  // SMITrigger? _sad;
+  // SMITrigger? _thinking;
 
 
   void _onRiveInit(Artboard artboard) {
@@ -25,11 +25,11 @@ class _AnimatedAvatarState extends State<AnimatedAvatar> {
     artboard.addController(controller);
 
     //set animation trigger
-    _idle = controller.findInput<bool>('idle') as SMITrigger;
+    // _idle = controller.findInput<bool>('idle') as SMITrigger;
     _hover = controller.findInput<bool>('hover') as SMITrigger;
     _happy = controller.findInput<bool>('happy') as SMITrigger;
-    _sad = controller.findInput<bool>('sad') as SMITrigger;
-    _thinking = controller.findInput<bool>('thinking') as SMITrigger;
+    // _sad = controller.findInput<bool>('sad') as SMITrigger;
+    // _thinking = controller.findInput<bool>('thinking') as SMITrigger;
 
    //animate _hover at first time
    WidgetsBinding.instance.addPostFrameCallback((duration) {
