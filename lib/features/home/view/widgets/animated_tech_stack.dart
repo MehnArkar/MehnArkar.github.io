@@ -7,7 +7,7 @@ class AnimatedTechStack extends StatelessWidget {
   final double? iconSize;
   const AnimatedTechStack({super.key, this.iconSize});
 
-  final List<String> techStackIcons = const ["flutter.svg","swift.svg","kotlin.svg","fastapi.svg"];
+  final List<String> techStackIcons = const ["flutter.svg","swift.svg","kotlin.svg","python.svg"];
 
   @override
   Widget build(BuildContext context) {
