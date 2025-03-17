@@ -87,7 +87,7 @@ class AnimatedMockup extends StatelessWidget {
                     alignment: Alignment.bottomLeft)
               ],
               child: Image.asset(
-                "${AppConstants.imagePath}/mockups/${images!.first}",
+                "${AppConstants.imagePath}/mockups/${images.first}",
                 height: height,
                 fit: BoxFit.cover,
               )),
