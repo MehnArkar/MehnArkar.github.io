@@ -13,14 +13,14 @@ class ProjectRepository {
       ),
       Project(
         name: "Ngwe Zay", 
-        description: "Ngwe Zay is a Myanmar Kyat-based currency exchange app, allowing users to quickly check MMK to foreign exchange rates and convert currencies effortlessly. With a user-friendly interface and practical features, it’s designed for fast, convenient currency conversions — now trusted by over 5,000+ users.",
+        description: "Ngwe Zay is a Myanmar Kyat-based currency exchange app, allowing users to quickly check MMK to foreign exchange rates and convert currencies effortlessly. It’s designed for fast, convenient currency conversions — now trusted by over 5,000 users.",
         images: ["ngwe_zay_1.webp","ngwe_zay_2.webp"],
         playstore: "https://play.google.com/store/apps/details?id=com.sourcecode.mm.ngwe_zay&pcampaignid=web_share",
         appstore: "https://apps.apple.com/th/app/ngwe-zay/id6475289659"  
       ),
       Project(
         name: "Khin Collections", 
-        description: "Khin Collections Jewelry app delivers an elegant and seamless shopping experience for jewelry lovers. Built with an intuitive interface and an exclusive membership rewards system, the app ensures smooth browsing, easy purchases, and a memorable user journey from start to finish.",
+        description: "Khin Collections Jewelry app delivers an elegant and seamless shopping experience for jewelry lovers. Built with an intuitive interface and an exclusive membership rewards system, the app ensures smooth browsing, easy purchases.",
         images: ["khin_collections_1.webp","khin_collections_2.webp"],
         appstore:"https://apps.apple.com/th/app/khin-collections/id6667100260" 
       ),
